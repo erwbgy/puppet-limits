@@ -5,7 +5,7 @@ define limits::set (
   $hard = undef
 ) {
   if $soft {
-    limits::conf { 'wso2esb':
+    limits::conf { $title:
       domain => $domain,
       type   => 'soft',
       item   => $item,
@@ -13,7 +13,7 @@ define limits::set (
     }
   }
   if $hard {
-    limits::conf { 'wso2esb':
+    limits::conf { $title:
       domain => $domain,
       type   => 'hard',
       item   => $item,
