@@ -1,6 +1,6 @@
 limits:
   '*':
-    item: 'nofiles'
+    item: 'nofile'
     soft: '2048'
     hard: '8192'
   '@mygroup':
