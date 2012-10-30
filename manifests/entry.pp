@@ -16,6 +16,30 @@ define limits::entry (
   $item,
   $value
 ) {
+  case $item {
+    'core': {}
+    'data': {}
+    'fsize': {}
+    'memlock': {}
+    'nofile': {}
+    'rss': {}
+    'stack': {}
+    'cpu': {}
+    'nproc': {}
+    'as': {}
+    'maxlogins': {}
+    'maxsyslogins': {}
+    'priority': {}
+    'locks': {}
+    'sigpending': {}
+    'msqqueue': {}
+    'nice': {}
+    'rtprio': {}
+    default: {
+      warning("Unknown item '$item' so you may get augeas errors - see the limits.conf man page for valid values")
+    }
+  }
+
   # guid of this entry
   $key = "${domain}/${type}/${item}"
 
