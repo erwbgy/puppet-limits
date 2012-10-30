@@ -4,13 +4,13 @@
 # - avoid nested define
 #
 # Example:
-#  limits::conf { 'wso2esb':
+#  limits::entry { 'wso2esb':
 #    domain => "@mygroup",
 #    type   => 'soft',
 #    item   => 'nofile',
 #    value  => '4096'
 #  }
-define limits::conf (
+define limits::entry (
   $domain,
   $type,
   $item,
