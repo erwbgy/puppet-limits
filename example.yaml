@@ -1,0 +1,9 @@
+limits:
+  '*':
+    item: 'nofiles'
+    soft: '2048'
+    hard: '8192'
+  '@mygroup':
+    item: 'nproc'
+    soft: '20'
+    hard: '50'
