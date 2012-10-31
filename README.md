@@ -30,6 +30,24 @@ This example creates the following entries in /etc/security/limits.conf:
 
 replacing any existing items in the same domain.
 
+You can also call it as a parameterised class passing in the configuration data as a hash - for example:
+
+    class { 'limits':
+      config => {
+        '*' => {
+          item => 'nofile',
+          soft => '2048',
+          hard => '8192',
+        },
+        '@mygroup' => {
+          item => 'nproc',
+          soft => '20',
+          hard => '50',
+        },
+      },
+      use_hiera => false,
+    }
+
 ### Parameters
 
 Each entry title is the domain name - for example '*' for all users, '@wheel'
