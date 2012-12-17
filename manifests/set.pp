@@ -1,9 +1,9 @@
 define limits::set (
+  $domain,
   $item,
   $soft = undef,
   $hard = undef
 ) {
-  $domain = $title
   if $soft {
     limits::entry { "${domain}-soft-${item}":
       domain => $domain,

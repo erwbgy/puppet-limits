@@ -8,7 +8,7 @@ define limits::domain (
   $maxlogins    = undef,
   $maxsyslogins = undef,
   $memlock      = undef,
-  $msqqueue     = undef,
+  $msgqueue     = undef,
   $nice         = undef,
   $nofile       = undef,
   $nproc        = undef,
@@ -171,12 +171,12 @@ define limits::domain (
   }
 
   # msgqueue: maximum memory used by POSIX message queues (bytes) (Linux 2.6 and higher)
-  if $msgqueu {
-    system::limits::set{ "${domain}-msgqueu":
+  if $msgqueue {
+    system::limits::set{ "${domain}-msgqueue":
       domain => $domain,
-      item   => 'msgqueu',
-      soft   => $msgqueu[soft],
-      hard   => $msgqueu[hard],
+      item   => 'msgqueue',
+      soft   => $msgqueue[soft],
+      hard   => $msgqueue[hard],
     }
   }
 
