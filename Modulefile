@@ -1,5 +1,5 @@
 name    'erwbgy-limits'
-version '0.3.0'
+version '0.3.1'
 author 'erwbgy'
 license 'Apache License, Version 2.0'
 summary 'Manage entries in /etc/security/limits.conf'

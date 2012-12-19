@@ -22,7 +22,7 @@ define limits::domain (
 
   # core: limits the core file size (KB)
   if $core {
-    system::limits::set{ "${domain}-core":
+    limits::set{ "${domain}-core":
       domain => $domain,
       item   => 'core',
       soft   => $core[soft],
@@ -32,7 +32,7 @@ define limits::domain (
 
   # data: maximum data size (KB)
   if $data {
-    system::limits::set{ "${domain}-data":
+    limits::set{ "${domain}-data":
       domain => $domain,
       item   => 'data',
       soft   => $data[soft],
@@ -42,7 +42,7 @@ define limits::domain (
 
   # fsize: maximum filesize (KB)
   if $fsize {
-    system::limits::set{ "${domain}-fsize":
+    limits::set{ "${domain}-fsize":
       domain => $domain,
       item   => 'fsize',
       soft   => $fsize[soft],
@@ -52,7 +52,7 @@ define limits::domain (
 
   # memlock: maximum locked-in-memory address space (KB)
   if $memlock {
-    system::limits::set{ "${domain}-memlock":
+    limits::set{ "${domain}-memlock":
       domain => $domain,
       item   => 'memlock',
       soft   => $memlock[soft],
@@ -62,7 +62,7 @@ define limits::domain (
 
   # nofile: maximum number of open files
   if $nofile {
-    system::limits::set{ "${domain}-nofile":
+    limits::set{ "${domain}-nofile":
       domain => $domain,
       item   => 'nofile',
       soft   => $nofile[soft],
@@ -72,7 +72,7 @@ define limits::domain (
 
   # rss: maximum resident set size (KB) (Ignored in Linux 2.4.30 and higher)
   if $rss {
-    system::limits::set{ "${domain}-rss":
+    limits::set{ "${domain}-rss":
       domain => $domain,
       item   => 'rss',
       soft   => $rss[soft],
@@ -82,7 +82,7 @@ define limits::domain (
 
   # stack: maximum stack size (KB)
   if $stack {
-    system::limits::set{ "${domain}-stack":
+    limits::set{ "${domain}-stack":
       domain => $domain,
       item   => 'stack',
       soft   => $stack[soft],
@@ -92,7 +92,7 @@ define limits::domain (
 
   # cpu: maximum CPU time (minutes)
   if $cpu {
-    system::limits::set{ "${domain}-cpu":
+    limits::set{ "${domain}-cpu":
       domain => $domain,
       item   => 'cpu',
       soft   => $cpu[soft],
@@ -102,7 +102,7 @@ define limits::domain (
 
   # nproc: maximum number of processes
   if $nproc {
-    system::limits::set{ "${domain}-nproc":
+    limits::set{ "${domain}-nproc":
       domain => $domain,
       item   => 'nproc',
       soft   => $nproc[soft],
@@ -112,7 +112,7 @@ define limits::domain (
 
   # as: address space limit (KB)
   if $as {
-    system::limits::set{ "${domain}-as":
+    limits::set{ "${domain}-as":
       domain => $domain,
       item   => 'as',
       soft   => $as[soft],
@@ -122,7 +122,7 @@ define limits::domain (
 
   # maxlogins: maximum number of logins for this user except for this with uid=0
   if $maxlogins {
-    system::limits::set{ "${domain}-maxlogins":
+    limits::set{ "${domain}-maxlogins":
       domain => $domain,
       item   => 'maxlogins',
       soft   => $maxlogins[soft],
@@ -132,7 +132,7 @@ define limits::domain (
 
   # maxsyslogins: maximum number of all logins on system
   if $maxsyslogins {
-    system::limits::set{ "${domain}-maxsyslogins":
+    limits::set{ "${domain}-maxsyslogins":
       domain => $domain,
       item   => 'maxsyslogins',
       soft   => $maxsyslogins[soft],
@@ -142,7 +142,7 @@ define limits::domain (
 
   # priority: the priority to run user process with (negative values boost process priority)
   if $priority {
-    system::limits::set{ "${domain}-priority":
+    limits::set{ "${domain}-priority":
       domain => $domain,
       item   => 'priority',
       soft   => $priority[soft],
@@ -152,7 +152,7 @@ define limits::domain (
 
   # locks: maximum locked files (Linux 2.4 and higher)
   if $locks {
-    system::limits::set{ "${domain}-locks":
+    limits::set{ "${domain}-locks":
       domain => $domain,
       item   => 'locks',
       soft   => $locks[soft],
@@ -162,7 +162,7 @@ define limits::domain (
 
   # sigpending: maximum number of pending signals (Linux 2.6 and higher)
   if $sigpending {
-    system::limits::set{ "${domain}-sigpending":
+    limits::set{ "${domain}-sigpending":
       domain => $domain,
       item   => 'sigpending',
       soft   => $sigpending[soft],
@@ -172,7 +172,7 @@ define limits::domain (
 
   # msgqueue: maximum memory used by POSIX message queues (bytes) (Linux 2.6 and higher)
   if $msgqueue {
-    system::limits::set{ "${domain}-msgqueue":
+    limits::set{ "${domain}-msgqueue":
       domain => $domain,
       item   => 'msgqueue',
       soft   => $msgqueue[soft],
@@ -182,7 +182,7 @@ define limits::domain (
 
   # nice: maximum nice priority allowed to raise to (Linux 2.6.12 and higher) values: [-20,19]
   if $nice {
-    system::limits::set{ "${domain}-nice":
+    limits::set{ "${domain}-nice":
       domain => $domain,
       item   => 'nice',
       soft   => $nice[soft],
@@ -192,7 +192,7 @@ define limits::domain (
 
   # rtprio: maximum realtime priority allowed for non-privileged processes (Linux 2.6.12 and higher)
   if $rtprio {
-    system::limits::set{ "${domain}-rtprio":
+    limits::set{ "${domain}-rtprio":
       domain => $domain,
       item   => 'rtprio',
       soft   => $rtprio[soft],
