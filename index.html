@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Puppet-limits : Puppet module to set entries in /etc/security/limits.conf" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Puppet-limits</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/erwbgy/puppet-limits">View on GitHub</a>
+
+          <h1 id="project_title">Puppet-limits</h1>
+          <h2 id="project_tagline">Puppet module to set entries in /etc/security/limits.conf</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/erwbgy/puppet-limits/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/erwbgy/puppet-limits/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>puppet-limits</h1>
+
+<p>Puppet module to set entries in /etc/security/limits.conf</p>
+
+<h2>limits</h2>
+
+<p>The recommended usage is to place the configuration under a limits hash in
+hiera and just include the limits module in your puppet configuration:</p>
+
+<pre><code>include limits
+</code></pre>
+
+<p>Example hiera config:</p>
+
+<pre><code>limits:
+  '*':
+    nofile:
+      soft: '2048'
+      hard: '8192'
+    nproc:
+      soft: '20'
+      hard: '20'
+  'myuser':
+    nofile:
+      soft: '4068'
+      hard: '8192'
+  '@mygroup':
+    nproc:
+      hard: '50'
+</code></pre>
+
+<p>This example creates the following entries in /etc/security/limits.conf:</p>
+
+<pre><code>* nofile soft 2048
+* nofile hard 8192
+myuser nofile soft 4068
+myuser nofile hard 8192
+* nproc soft 20
+* nproc hard 20
+@mygroup nproc hard 50
+</code></pre>
+
+<p>replacing any existing items in the same domain.</p>
+
+<p>You can also call it as a parameterised class passing in the configuration data as a hash - for example:</p>
+
+<pre><code>class { 'limits':
+  config =&gt; {
+    '*' =&gt; {
+      'nofile' =&gt; {
+        soft =&gt; '2048',
+        hard =&gt; '8192',
+      },
+      'nproc' =&gt; {
+        soft =&gt; '20',
+        hard =&gt; '20',
+      },
+    },
+    '@mygroup' =&gt; {
+      'nproc' =&gt; {
+        hard =&gt; '50',
+      }
+    },
+  },
+  use_hiera =&gt; false,
+}
+</code></pre>
+
+<h3>Parameters</h3>
+
+<p>Each entry title is the domain name - for example '*' for all users, '<a href="https://github.com/wheel" class="user-mention">@wheel</a>'
+for members of the wheel group, 'root' for the root user etc.</p>
+
+<p>For each domain there is one or more items: one of: 'core', 'data', 'fsize',
+'memlock', 'nofile', 'rss', 'stack', 'cpu', 'nproc', 'as', 'maxlogins',
+'maxsyslogins', 'priority', 'locks', 'sigpending', 'msqqueue', 'nice',
+'rtprio'. </p>
+
+<p>For each item the following parameters are accepted:</p>
+
+<ul>
+<li><p><em>soft</em>: the item's soft limit. Optional.</p></li>
+<li><p><em>hard</em>: the item's hard limit. Optional.</p></li>
+</ul><p>See the limits.conf(5) man page for more information.</p>
+
+<p>Implementation based on <a href="https://projects.puppetlabs.com/projects/puppet/wiki/Puppet_Augeas">https://projects.puppetlabs.com/projects/puppet/wiki/Puppet_Augeas</a></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Puppet-limits maintained by <a href="https://github.com/erwbgy">erwbgy</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
