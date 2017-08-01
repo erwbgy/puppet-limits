@@ -45,13 +45,14 @@ define limits::entry (
 
   # augtool> match /files/etc/security/limits.conf/domain[.="root"][./type="hard" and ./item="nofile" and ./value="10000"]
 
-  $context = '/files/etc/security/limits.conf'
+  $incl = '/etc/security/limits.conf'
 
   $path_list  = "domain[.=\"${domain}\"][./type=\"${type}\" and ./item=\"${item}\"]"
   $path_exact = "domain[.=\"${domain}\"][./type=\"${type}\" and ./item=\"${item}\" and ./value=\"${value}\"]"
 
   augeas { "limits_conf/${key}":
-    context => $context,
+    incl    => $incl,
+    lens    => 'Limits.lns',
     onlyif  => "match ${path_exact} size == 0",
     changes => [
       # remove all matching to the ${domain}, ${type}, ${item}, for any ${value}
